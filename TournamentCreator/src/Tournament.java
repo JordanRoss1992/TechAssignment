@@ -4,14 +4,16 @@ public class Tournament {
 	static protected int numPools;
 	static protected int numTeams;
 	static protected int numRounds;
+	static protected String poolMode;
 	
 	private ArrayList<Pool> itsPools = new ArrayList<Pool>();
 	private ArrayList<Team> itsTeams = new ArrayList<Team>();
 	
-	public Tournament(int numP, int numT, int numR){
+	public Tournament(int numP, int numT, int numR, String mode){
 		numPools = numP;
 		numTeams = numT;
 		numRounds = numR;
+		poolMode = mode;
 		this.createPools(numP);
 		this.createTeams(numT);
 	}
@@ -34,7 +36,7 @@ public class Tournament {
 		int teamIterator = 0;
 		for(int i = 1; i < numRows; i++){
 			// Even Row
-			if(i%2 == 0){
+			if(i%2 == 0 && poolMode.toLowerCase().contains("snake")){
 				for(int j = itsPools.size() - 1; j >= 0; j--){
 					if(teamIterator < numTeams){
 						itsPools.get(j).addTeam(itsTeams.get(teamIterator));
