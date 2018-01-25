@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  its_pools: one
+  its_teams: one
+  num_pools: 1
+  num_teams: 1
+  num_rounds: 1
+
+two:
+  its_pools: two
+  its_teams: two
+  num_pools: 1
+  num_teams: 1
+  num_rounds: 1

@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  pool_name: MyString
+  its_teams: one
+
+two:
+  pool_name: MyString
+  its_teams: two
