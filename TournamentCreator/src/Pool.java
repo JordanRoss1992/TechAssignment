@@ -11,22 +11,24 @@ public class Pool {
 	
 	public void createGames(){
 		int duplicateRemoval = 0;
+		int gameId = 1;
 		for(int i = 0; i < itsTeams.size() - 1; i++) {
-			for(int j = duplicateRemoval; j < itsTeams.size() - 1; j++){
+			for(int j = duplicateRemoval; j < itsTeams.size(); j++){
 				if(i != j){
-					itsGames.add(new Game(duplicateRemoval, itsTeams.get(i), itsTeams.get(j)));
+					String gameIdString = poolName + Integer.toString(gameId);
+					itsGames.add(new Game(gameIdString, itsTeams.get(i), itsTeams.get(j)));
+					gameId++;
 				}
 			}
 			duplicateRemoval++;
 		}
 	}
 	
-	
 	public void addTeam(Team t){
 		itsTeams.add(t);
 	}
 	
-	public Game getGameById(int identifier){
+	public Game getGameById(String identifier){
 		for(Game g : itsGames){
 			if(g.getId() == identifier){
 				return g;

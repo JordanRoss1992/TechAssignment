@@ -1,27 +1,32 @@
 
 public class Game {
-	private Team team1;
-	private Team team2;
-	private int gameId;
+	private Team homeTeam;
+	private Team awayTeam;
+	private String gameId;
 	
-	public Game(int id, Team t1, Team t2){
+	public Game(String id, Team t1, Team t2){
 		gameId = id;
-		team1 = t1;
-		team2 = t2;
-	}
-	
-	public boolean isDuplicateGame(Team t1, Team t2){
-		if(this.team1 == t2 && this.team2 == t1){
-			return true;
+		
+		// randomize which team is home, and which is away
+		if(Math.random() < .5){
+			homeTeam = t1;
+			awayTeam = t2;
+		} else {
+			homeTeam = t2;
+			awayTeam = t1;
 		}
-		return false;	
+			
 	}
 	
 	public void printGame(){
-		System.out.println("First Team: " + team1.getName() + " vs. " + "Second team: " + team2.getName());
+		System.out.println("GAME ID: " + gameId + " Home Team: " + homeTeam.getName() + " vs. " + "Away Team: " + awayTeam.getName());
 	}
 	
-	public int getId(){
+	public void setGameId(String s){
+		this.gameId = s;
+	}
+	
+	public String getId(){
 		return this.gameId;
 	}
 

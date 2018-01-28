@@ -20,13 +20,13 @@ public class Tournament {
 	
 	private void createPools(int numPools){
 		char[] alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
-		for(int i =0; i < numPools; i++){
+		for(int i = 0; i < numPools; i++){
 			itsPools.add(new Pool("Pool_" + alphabet[i]));
 		}
 	}
 	
 	private void createTeams(int numTeams){
-		for(int i =0; i < numTeams; i++){
+		for(int i = 0; i < numTeams; i++){
 			itsTeams.add(new Team("Team #" + new Integer(i+1).toString()));
 		}
 	}
@@ -34,7 +34,7 @@ public class Tournament {
 	public void poolTeams(){
 		int numRows = setNumRows(numTeams, numPools);
 		int teamIterator = 0;
-		for(int i = 1; i < numRows; i++){
+		for(int i = 1; i <= numRows; i++){
 			// Even Row
 			if(i%2 == 0 && poolMode.toLowerCase().contains("snake")){
 				for(int j = itsPools.size() - 1; j >= 0; j--){
@@ -55,15 +55,17 @@ public class Tournament {
 	}
 	
 	public void printTournament(){
+		for(int i = 1; i < numRounds + 1; i++){
 		for(Pool p : itsPools){
-			p.createGames();
-			System.out.println("Pool: " + p.getName() + " Teams:");
-			for(Team t : p.getTeams()){
-				System.out.println(" -- " + t.getName());
-			}
-			System.out.println(p.getName() + " Games:");
-			for(Game g : p.getGames()){
-				g.printGame();
+				p.createGames();
+				System.out.println("Pool: " + p.getName() + " Teams:");
+				for(Team t : p.getTeams()){
+					System.out.println(" -- " + t.getName());
+				}
+				System.out.println(p.getName() + " Round " + i + " Games:" );
+				for(Game g : p.getGames()){
+					g.printGame();
+				}
 			}
 		}
 	}
